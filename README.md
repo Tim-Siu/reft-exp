@@ -167,14 +167,14 @@ bash ../evaluation/kk/scripts/eval/eval_grpo.sh
 
 Direct RL training on smaller LLMs (e.g., Qwen2.5-1.5B) proved challenging, often leading to model collapse.  We therefore investigated a distillation-based approach, first distilling knowledge from our larger, RL-trained Qwen2.5-7B model into the smaller Qwen2.5-1.5B model, and then applying RL to the distilled model.
 
-**Key Result:** Distillation significantly improved the performance of the smaller model, allowing it to exhibit reflection patterns similar to the teacher model.  Furthermore, applying RL *after* distillation ("cold starting") led to performance comparable to the 7B model, demonstrating the effectiveness of this combined approach.
+**Key Result:** Distillation significantly improved the performance of the smaller model, allowing it to exhibit reflection patterns similar to the teacher model.  Furthermore, applying RL *after* distillation ("cold starting") led to performance comparable to the 7B model, demonstrating the effectiveness of Reinforcement Learning from cold start checkpoints (i.e., distillation SFT then RL).
 
 <details>
 <summary>Detailed Results and Reproduction Instructions</summary>
 
 ### Unfruitful attemp: Direct RL on Qwen2.5-1.5B-Insturct
 
-Direct application of GRPO to Qwen2.5-1.5B-Instruct resulted in model collapse, with the model overfitting and generating dummy responses.
+Direct application of GRPO to Qwen2.5-1.5B-Instruct resulted in model collapse, with the model overfitting and generating dummy responses. The model converged to outputting dummy `think` message like "this is a think message" inside the `<think></think>` block.
 
 <p float="left">
   <img src="docs/pics/small_training_outcome_score.png" width="32%" alt="Training accuracy" />
@@ -183,7 +183,7 @@ Direct application of GRPO to Qwen2.5-1.5B-Instruct resulted in model collapse, 
 </p>
 
 ### Eliciting Reflection with Distillation for Small LMs
-We distilled the trained Qwen2.5-7B-GRPO model into Qwen2.5-1.5B-Instruct. This was done by sampling solutions from teacher model. The training was stable and the distilled model showed improved accuracy, though lower than teacher.
+We distilled the trained Qwen2.5-7B-GRPO model into Qwen2.5-1.5B-Instruct. This was done by sampling one correct solution from teacher model for each question. The training was stable and the distilled model showed improved accuracy, though lower than teacher.
 
 <p float="left">
   <img src="docs/pics/small_training_loss.png" width="49%" alt="Training loss" />

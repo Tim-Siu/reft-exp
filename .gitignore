@@ -13,6 +13,9 @@
 # Ignore export from Jupyter Notebook
 *.html
 
+# Ignore all parquet files
+*.parquet
+
 # Ignore __pycache__ directories
 __pycache__/
 
@@ -27,3 +30,7 @@ experiments/raw
 experiments/wandb
 
 experiments/outputs
+
+experiments/notebooks
+
+research/
