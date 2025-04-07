@@ -4,7 +4,7 @@ This repository explores methods for eliciting reflection in Large Language Mode
 
 ---
 
-## Eliciting Reflection in LLMs with RL
+## Eliciting Reflection in LLMs with RL (A replication of Logic-RL)
 
 We first experimented with directly applying RL to elicit reflection, building upon the work of [Logic-RL](https://github.com/Unakar/Logic-RL). We used the GRPO algorithm on the 5-person configuration of the KK dataset.  While Logic-RL employs curriculum learning across various configurations, our approach focuses primarily on the 5-person setting.
 
@@ -45,7 +45,7 @@ This highlight demonstrates the model's ability to recognize contradictions and 
 | **Qwen2.5-7B-GRPO (ours; step 420)**                                  | **0.92** | 0.93     | 0.98     | 1.00     | 0.98     | 0.90     | 0.85     | 0.79     |
 
 
-*Note: first 5 results are from [Logic-RL](https://github.com/Unakar/Logic-RL). The last 4 are from our experiments.*
+*Note: first 5 results are from [Logic-RL](https://github.com/Unakar/Logic-RL). The last 4 are from our experiments. Due to a bug, We used greedy decoding for all evaluation, even for DeepSeek series of models.*
 
 ---
 <details>
@@ -242,4 +242,4 @@ bash run_logicRL_cold_4gpus.sh
 
 ---
 
-*Note: Requires modified verl framework from this repository.  Sampling details for different models are provided in the detailed sections.*
+*Note: Requires modified verl framework from this repository.*

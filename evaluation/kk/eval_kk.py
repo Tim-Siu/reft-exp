@@ -230,7 +230,7 @@ if __name__ == "__main__":
     parser.add_argument("--split", type=str, default="test", choices=["test", "train"], help="Data split to use")
     parser.add_argument("--eval_nppl", type=int, default=0, help="Number of people to evaluate")
     parser.add_argument("--problem_type", type=str, default="clean", help="Problem perturbation type")
-    parser.add_argument("--temperature", type=float, default=1.0, help="Temperature for sampling")
+    parser.add_argument("--temperature", type=float, default=0.0, help="Temperature for sampling")
     parser.add_argument("--mode", type=str, default="zero-unified", 
         help=(
                 "zero is intended to apply chat template of Tiny-Zero and parser "

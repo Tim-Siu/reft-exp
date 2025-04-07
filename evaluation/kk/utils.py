@@ -39,7 +39,7 @@ def batch_decode_vllm(llm, prompts, batch_size=32):
     all_responses = []
     for i in range(0, len(prompts), batch_size):
         batch_prompts = prompts[i : i + batch_size]
-        sampling_params = SamplingParams(max_tokens=llm.max_tokens, temperature=0)
+        sampling_params = SamplingParams(max_tokens=llm.max_tokens, temperature=llm.temperature)
         outputs = llm.model.generate(
             batch_prompts, sampling_params
         )
@@ -71,6 +71,7 @@ def load_llm(args):
             arch=args.arch,
             use_vllm=args.use_vllm,
             max_tokens=args.max_token,
+            temperature=args.temperature,
         )
     return llm
 
